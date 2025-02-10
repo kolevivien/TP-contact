@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<center>
+    <div class="container mt-4">
+        <h2>Contactez-nous</h2>
+
+
+        {{ form_start(form) }}
+           
+                {{ form_row(form.nom) }}
+              
+            <br/>
+          
+                {{ form_row(form.email) }}
+                
+            <br/>
+            <div class="mb-3">
+                {{ form_label(form.message) }}
+                {{ form_widget(form.message, { 'attr': {'class': 'form-control', 'rows': '4'} }) }}
+            </div>
+            <br/>
+            {{ form_row(form.service) }}
+            <br/>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        {{ form_end(form) }}
+            <br/>
+        <a href="{{ path('ajouter_utilisateur') }}" class="btn btn-secondary">Retourner a la page précédente</a>
+    </div>
+    <center/>
+{% endblock %}

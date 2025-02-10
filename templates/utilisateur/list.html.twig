@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Utilisateurs{% endblock %}
+
+{% block body %}
+<center>
+
+    <h1>Liste des Utilisateurs</h1>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Numéro</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for utilisateur in utilisateurs %}
+                <tr>
+                    <td>{{ utilisateur.id }}</td>
+                    <td>{{ utilisateur.nom }}</td>
+                    <td>{{ utilisateur.prenom }}</td>
+                    <td>{{ utilisateur.numero }}</td>
+                    <td>
+                        <a href="{{ path('modifier_utilisateur', {'id': utilisateur.id}) }}" class="btn btn-warning">Modifier</a>
+                        <a href="{{ path('supprimer_utilisateur', {'id': utilisateur.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun utilisateur trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ path('ajouter_utilisateur') }}" class="btn btn-primary">Ajouter un nouvel utilisateur</a>
+    <center/>
+{% endblock %}
