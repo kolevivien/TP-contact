@@ -13,6 +13,12 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class UtilisateurController extends AbstractController
 {
+    #[Route('/Utilisateur',name:'index')]
+    public function index()
+    {
+        return $this->render('utilisateur/index.html.twig');
+    }
+
     #[Route('/ajouter-utilisateur', name: 'ajouter_utilisateur')]
     public function add(Request $request, EntityManagerInterface $em): Response
     {
